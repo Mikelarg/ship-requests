@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/ship-requests/static/css/main.006d7301.chunk.css",
+    "main.js": "/ship-requests/static/js/main.0cf315f7.chunk.js",
+    "main.js.map": "/ship-requests/static/js/main.0cf315f7.chunk.js.map",
+    "runtime-main.js": "/ship-requests/static/js/runtime-main.c08f54da.js",
+    "runtime-main.js.map": "/ship-requests/static/js/runtime-main.c08f54da.js.map",
+    "static/css/2.8a12d995.chunk.css": "/ship-requests/static/css/2.8a12d995.chunk.css",
+    "static/js/2.277b070a.chunk.js": "/ship-requests/static/js/2.277b070a.chunk.js",
+    "static/js/2.277b070a.chunk.js.map": "/ship-requests/static/js/2.277b070a.chunk.js.map",
+    "static/js/3.0906cb82.chunk.js": "/ship-requests/static/js/3.0906cb82.chunk.js",
+    "static/js/3.0906cb82.chunk.js.map": "/ship-requests/static/js/3.0906cb82.chunk.js.map",
+    "index.html": "/ship-requests/index.html",
+    "static/css/2.8a12d995.chunk.css.map": "/ship-requests/static/css/2.8a12d995.chunk.css.map",
+    "static/css/main.006d7301.chunk.css.map": "/ship-requests/static/css/main.006d7301.chunk.css.map",
+    "static/js/2.277b070a.chunk.js.LICENSE.txt": "/ship-requests/static/js/2.277b070a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c08f54da.js",
+    "static/css/2.8a12d995.chunk.css",
+    "static/js/2.277b070a.chunk.js",
+    "static/css/main.006d7301.chunk.css",
+    "static/js/main.0cf315f7.chunk.js"
+  ]
+}
