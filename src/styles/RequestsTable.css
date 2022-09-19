@@ -19,3 +19,7 @@
 .requests-table .ant-table-body {
     background: #141414;
 }
+
+.requests-table .ant-table-tbody {
+    background: #141414;
+}
