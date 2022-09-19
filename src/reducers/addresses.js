@@ -16,7 +16,3 @@ const addresses = (state = {}, action) => {
 };
 
 export default addresses;
-
-export function getAddress(state, id) {
-    return state[id]
-}

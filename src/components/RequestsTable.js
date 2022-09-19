@@ -1,5 +1,5 @@
-import {Space, Table, Form, Popconfirm, Typography} from "antd";
-import React, {useRef, useState} from "react";
+import {Table, Form, Popconfirm, Typography} from "antd";
+import React, {useState} from "react";
 
 import '../styles/RequestsTable.css'
 import {connect} from "react-redux";
@@ -9,22 +9,26 @@ import {Request} from "./propTypes";
 import EditableAddressCell from "./EditableAddressCell";
 
 const RequestsTable = (props) => {
+    const {addresses, updateRequest, setCurrentRequest, requests, currentRequest} = props;
+
     const [form] = Form.useForm();
 
-    const requests = Object.values(props.requests);
-    const {addresses} = props;
-    const selectedRowKeys = [props.currentRequest.id];
+    const requestsValues = Object.values(requests);
+    const selectedRowKeys = [currentRequest.id];
     const rowSelection = {
         selectedRowKeys,
         onChange: (key) => {
-            props.setCurrentRequest(props.requests[key])
+            setCurrentRequest(requests[key])
         },
         type: 'radio'
     };
 
     const [editingKey, setEditingKey] = useState('');
+    // Принял решение хранить значения редактирования не в форме, так как обновление полей очень долго шло и портило
+    // юзер экспириенс
     const [editingAddressFrom, setEditingAddressFrom] = useState('');
     const [editingAddressTo, setEditingAddressTo] = useState('');
+
     const isEditing = (record) => record.id === editingKey;
 
     const edit = (record) => {
@@ -46,7 +50,7 @@ const RequestsTable = (props) => {
 
     const save = async (key) => {
         try {
-            props.updateRequest(editingKey, addresses[parseInt(editingAddressFrom)], addresses[parseInt(editingAddressTo)]);
+            updateRequest(editingKey, addresses[parseInt(editingAddressFrom)], addresses[parseInt(editingAddressTo)]);
             setEditingKey('');
             setEditingAddressFrom('');
             setEditingAddressTo('');
@@ -136,7 +140,7 @@ const RequestsTable = (props) => {
 
     return (
         <Table
-            columns={mergedColumns} dataSource={requests}
+            columns={mergedColumns} dataSource={requestsValues}
             pagination={false} className='requests-table'
             rowSelection={rowSelection} rowKey="id"
             rowClassName="editable-row"

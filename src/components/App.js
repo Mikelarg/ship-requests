@@ -21,7 +21,8 @@ function App() {
     } = useResizable({
         axis: "x",
         initial: 540,
-        min: 300
+        min: 300,
+        max: 1000
     });
     return (
         <Layout

@@ -22,10 +22,12 @@ const SampleSplitter = ({
                 (isDragging || isFocused) && 'sample-drag-bar--dragging'
             )}
             onFocus={() => setIsFocused(true)}
+            onTouchStart={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
+            onTouchEnd={() => setIsFocused(false)}
             {...props}
         />
     )
-}
+};
 
 export default SampleSplitter

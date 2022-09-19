@@ -45,8 +45,5 @@ const currentRequest = (state = {}, action) => {
     }
 };
 
-export default {requests, currentRequest};
-
-export function getRequest(state, id) {
-    return state[id]
-}
+export {currentRequest, requests};
+export default requests;
