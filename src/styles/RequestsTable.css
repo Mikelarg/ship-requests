@@ -1,0 +1,21 @@
+.requests-table {
+    width: 100%;
+    overflow: auto;
+    height: 100%;
+    max-height: 93vh;
+}
+
+.requests-table .editable-row .ant-form-item-explain {
+    position: absolute;
+    top: 100%;
+    font-size: 12px;
+}
+
+.requests-table .ant-table-cell.address_cell {
+    min-width: 127px;
+    width: 127px;
+}
+
+.requests-table .ant-table-body {
+    background: #141414;
+}
