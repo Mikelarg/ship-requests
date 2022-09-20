@@ -25,6 +25,7 @@ const EditableAddressCell = ({
         form.setFieldsValue({[dataIndex]: parseInt(value)});
         onChange(dataIndex, value)
     };
+    delete restProps['dispatch'];
 
     return (
         <td {...restProps}>

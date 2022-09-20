@@ -1,5 +1,6 @@
 import {Table, Form, Popconfirm, Typography} from "antd";
 import React, {useState} from "react";
+import PropTypes from "prop-types";
 
 import '../styles/RequestsTable.css'
 import {connect} from "react-redux";
@@ -14,7 +15,7 @@ const RequestsTable = (props) => {
     const [form] = Form.useForm();
 
     const requestsValues = Object.values(requests);
-    const selectedRowKeys = [currentRequest.id];
+    const selectedRowKeys = [currentRequest ? currentRequest.id : null];
     const rowSelection = {
         selectedRowKeys,
         onChange: (key) => {
@@ -33,9 +34,9 @@ const RequestsTable = (props) => {
 
     const edit = (record) => {
         form.setFieldsValue({
+            ...record,
             address_from: record.address_from_id,
             address_to: record.address_to_id,
-            ...record,
         });
         setEditingKey(record.id);
         setEditingAddressFrom(record.address_from_id);
@@ -101,8 +102,9 @@ const RequestsTable = (props) => {
                           Сохранить
                         </Typography.Link>
                         <br/>
-                        <Popconfirm title="Уверенны, что хотите отменить изменения?" onConfirm={cancel}>
-                          <a>Отменить</a>
+                        <Popconfirm title="Уверенны, что хотите отменить изменения?" onConfirm={cancel}
+                                    okText="Да" cancelText="Нет">
+                          <a href="/#">Отменить</a>
                         </Popconfirm>
                     </span>
                 ) : (
@@ -147,7 +149,8 @@ const RequestsTable = (props) => {
             components={{
                 body: {
                     cell: (props) => <EditableAddressCell form={form} addressFrom={editingAddressFrom}
-                                                          addressTo={editingAddressTo} onChange={onAddressChange} {...props}/>,
+                                                          addressTo={editingAddressTo}
+                                                          onChange={onAddressChange} {...props}/>,
                 },
             }}
         />
@@ -155,7 +158,7 @@ const RequestsTable = (props) => {
 };
 
 RequestsTable.propTypes = {
-    requests: Request.isRequired,
+    requests: PropTypes.objectOf(Request),
     currentRequest: Request
 };
 

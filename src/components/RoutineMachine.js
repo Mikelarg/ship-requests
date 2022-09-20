@@ -1,10 +1,12 @@
 import L from "leaflet";
 import "leaflet-routing-machine";
-import {connect} from "react-redux";
-import {Request} from "./propTypes";
-import {isEmpty} from "../utils/utils";
 import {useMap} from "react-leaflet";
 import {useEffect} from "react";
+import {connect} from "react-redux";
+import PropTypes from "prop-types";
+
+import {Request} from "./propTypes";
+
 import icon from 'leaflet/dist/images/marker-icon.png';
 
 const createRoutineMachineLayer = (props) => {
@@ -17,7 +19,7 @@ const createRoutineMachineLayer = (props) => {
     useEffect(() => {
         if (!map) return;
         let wayPoints = [];
-        if (!isEmpty(currentRequest)) {
+        if (currentRequest) {
             wayPoints = [
                 L.latLng(currentRequest.address_from.lat, currentRequest.address_from.lon),
                 L.latLng(currentRequest.address_to.lat, currentRequest.address_to.lon)
@@ -59,7 +61,7 @@ const createRoutineMachineLayer = (props) => {
 };
 
 createRoutineMachineLayer.propTypes = {
-    currentRequest: Request
+    currentRequest: PropTypes.oneOfType([Request, PropTypes.instanceOf(null)])
 };
 
 const RoutineMachine = connect(state => ({

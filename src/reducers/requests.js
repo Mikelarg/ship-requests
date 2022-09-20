@@ -25,12 +25,12 @@ const requests = (state = {}, action) => {
     }
 };
 
-const currentRequest = (state = {}, action) => {
+const currentRequest = (state = null, action) => {
     switch (action.type) {
         case SET_CURRENT_REQUEST:
             return {...action.request};
         case UPDATE_REQUEST:
-            if (state.id === action.requestId) {
+            if (state && state.id === action.requestId) {
                 return {
                     ...state,
                     address_from_id: action.addressFrom.id,
